@@ -4,7 +4,7 @@ var albumPicasso = {
      artist: 'Pablo Picasso',
      label: 'Cubism',
      year: '1881',
-     albumArtUrl: 'assets/images/album_covers/01.png',
+     albumArtUrl: '/assets/images/album_covers/01.png',
      songs: [
          { title: 'Blue', duration: 161.71, audioUrl: 'assets/music/blue'  },
          { title: 'Green', duration: 103.96, audioUrl: 'assets/music/green' },
@@ -20,7 +20,7 @@ var albumPicasso = {
      artist: 'Guglielmo Marconi',
      label: 'EM',
      year: '1909',
-     albumArtUrl: 'assets/images/album_covers/20.png',
+     albumArtUrl: '/assets/images/album_covers/20.png',
      songs: [
          { title: 'Hello, Operator?', duration: '1:01' },
          { title: 'Ring, ring, ring', duration: '5:01' },
@@ -34,7 +34,7 @@ var albumPicasso = {
      artist: 'Lumineers',
      label: 'Dangerbird Records',
      year: '2016',
-     albumArtUrl: 'assets/images/album_covers/03.png',
+     albumArtUrl: '/assets/images/album_covers/03.png',
      songs: [
          { title: 'Sleep on the floor', duration: '1:01' },
          { title: 'Ophelia', duration: '5:01' },

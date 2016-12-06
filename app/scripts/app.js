@@ -16,11 +16,11 @@
                 url: '/album',
                 controller: 'AlbumCtrl as album',
                 templateUrl: '/templates/album/html'
-                })
+         })
          
          .state('collection', {
                  url: '/collection',
-                 controller: 'collectionCtrl as collection',
+                 controller: 'CollectionCtrl as collection',
                  templateUrl:'/templates/collection.html'
          });
          
