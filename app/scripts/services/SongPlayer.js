@@ -42,7 +42,7 @@
          };
          
          
-          //play a song
+          //play 
         SongPlayer.play = function(song) {
               
              if (currentSong !== song) { 
@@ -57,7 +57,7 @@
               
         };
           
-          //pause a song
+          //pause 
           SongPlayer.pause = function(song) {
                 currentBuzzObject.pause();
                 song.playing = false;
