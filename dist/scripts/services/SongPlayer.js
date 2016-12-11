@@ -44,12 +44,13 @@
          /**
             @desc playing current audio file (buzz object)
             @type {object}
-         */
+         */ 
+         //plays song
          var playSong = function(song) {
              currentBuzzObject.play(); 
              song.playing = true;
          };
-         
+         //stops song 
            var stopSong = function(song) {
             currentBuzzObject.stop();
             song.playing = null;
