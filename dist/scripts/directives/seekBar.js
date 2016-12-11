@@ -20,17 +20,24 @@
                 //Holds the element that matches the directive <seekBar>as a jquery object so we can call jquery methonds on it.
                 var seekBar = $(element);
                 
-                var percentString = function () {
+                 var percentString = function () {
                     var value = scope.value;
                     var max = scope.max;
-                    var percent = "%";
-                };
-                scope.fillStyle = function() {
+                    var percent = value / max * 100;
+                    return percent + "%";
+                 };
+                    scope.fillStyle = function() {
                     return {width: percentString()};
+                    };
                     
                      scope.thumbStyle = function() {
                     return {left: percentString()};  
-                };
+                
+                     };
+                
+                 scope.onClickSeekBar = function(event) {
+                    var percent = calculatePercent(seekBar, event);
+                    scope.value = percent * scope.max;
                 };
                 //Updates the seek bar value based on seek bar's width and location of click on bar
                 scope.trackThumb = function() {
