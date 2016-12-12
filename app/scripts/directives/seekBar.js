@@ -13,12 +13,23 @@
             templateUrl: '/templates/directives/seek_bar.html',
             replace: true,
             restrict: 'E',
-            scope: { },
+            scope: { 
+            onChange: '&'
+            },
             link: function(scope, element, attributes) {
                 scope.value = 0;
                 scope.max = 100;
                 //Holds the element that matches the directive <seekBar>as a jquery object so we can call jquery methonds on it.
                 var seekBar = $(element);
+                
+                
+                attributes.$observe('value', function(newValue) {
+                    scope.value = newValue;
+                });
+                
+                attributes.$observe('max', function(newValue) {
+                    scope.max = newValue;
+                });
                 
                  var percentString = function () {
                     var value = scope.value;
@@ -35,9 +46,11 @@
                 
                      };
                 
+                
                  scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
+                     notifyOnChange(scope.value);
                 };
                 //Updates the seek bar value based on seek bar's width and location of click on bar
                 scope.trackThumb = function() {
@@ -45,6 +58,7 @@
                          var percent = calculatePercent(seekBar, event);
                          scope.$apply(function() {
                              scope.value = percent * scope.max;
+                             notifyOnChange(scope.value);
                          });
                      });
 
@@ -52,6 +66,11 @@
                          $document.unbind('mousemove.thumb');
                          $document.unbind('mouseup.thumb');
                      });
+                };
+                var notifyOnChange = function(newValue) {
+                    if(typeof scope.onChange === 'function'){
+                        scope.onChange({value: newValue});
+                    }
                 };
             }
         };
