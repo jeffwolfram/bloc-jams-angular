@@ -29,11 +29,11 @@
                 formats: ['mp3'],
                 preload: true
             });
-              currentBuzzObject.bind('timeupdate', function(){
-                  $rootScope.$apply(function() {
-                  SongPlayer.currentTime = currentBuzzObject.getTime();
-                  });
+            currentBuzzObject.bind('timeupdate', function(){
+              $rootScope.$apply(function() {
+              SongPlayer.currentTime = currentBuzzObject.getTime();
               });
+            });
 
  
             SongPlayer.currentSong = song;
@@ -61,12 +61,12 @@
          //plays song
          var playSong = function(song) {
              currentBuzzObject.play(); 
-             song.playing = true;
+             SongPlayer.currentSong.playing = true;
          };
          //stops song 
            var stopSong = function(song) {
             currentBuzzObject.stop();
-            song.playing = null;
+            SongPlayer.currentSong.playing = null;
         };
          
          
@@ -98,7 +98,9 @@
              currentSongIndex--;
              //check to see if song is zero and if so set to one, if not play previous song
              if(currentSongIndex < 0){
+                 
                 stopSong(song);
+                 SongPlayer.currentSong.playing = null;
              } else {
                  var song = currentAlbum.songs[currentSongIndex];
                  setSong(song);
@@ -130,7 +132,16 @@
                  currentBuzzObject.setTime(time);
              }
          };
-      
+      // hold the value of volume
+         
+         SongPlayer.volume = null;
+         
+         //method to change volume on player
+         SongPlayer.setVolume = function(value){
+             if(currentBuzzObject){
+                 currentBuzzObject.setVolume(value);
+             }
+         };
               
           return SongPlayer;
      }
